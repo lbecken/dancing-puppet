@@ -1,0 +1,37 @@
+{
+  "name": "wooden-cat-marionette",
+  "description": "Skeleton of the wooden cat marionette. Same bone names, hierarchy and angle conventions as rig-demon.json (rest pose = all angles 0, standing, limbs hanging; degrees, positive = clockwise on screen; y down), different proportions. Units: arbitrary 'puppet units', ~101 tall.",
+  "units": "puppet units",
+  "rest_root": [0, 0],
+  "ground_y": 47,
+  "height": 101,
+  "bones": [
+    { "name": "pelvis",     "parent": null,        "offset": [0, 0],          "tail": [0, 4] },
+    { "name": "spine",      "parent": "pelvis",    "offset": [0, -3],         "tail": [0, -22] },
+    { "name": "neck",       "parent": "spine",     "offset": [0, -22],        "tail": [0, -4] },
+    { "name": "head",       "parent": "neck",      "offset": [0, -4],         "tail": [0, -11] },
+    { "name": "upperArmR",  "parent": "spine",     "offset": [-10.5, -19.5],  "tail": [0, 13.5] },
+    { "name": "forearmR",   "parent": "upperArmR", "offset": [0, 13.5],       "tail": [0, 12.5] },
+    { "name": "handR",      "parent": "forearmR",  "offset": [0, 12.5],       "tail": [0, 8.5] },
+    { "name": "upperArmL",  "parent": "spine",     "offset": [10.5, -19.5],   "tail": [0, 13.5] },
+    { "name": "forearmL",   "parent": "upperArmL", "offset": [0, 13.5],       "tail": [0, 12.5] },
+    { "name": "handL",      "parent": "forearmL",  "offset": [0, 12.5],       "tail": [0, 8.5] },
+    { "name": "thighR",     "parent": "pelvis",    "offset": [-4.6, 3.5],     "tail": [0, 19.5] },
+    { "name": "shinR",      "parent": "thighR",    "offset": [0, 19.5],       "tail": [0, 19.5] },
+    { "name": "footR",      "parent": "shinR",     "offset": [0, 19.5],       "tail": [-7.5, 2.5] },
+    { "name": "thighL",     "parent": "pelvis",    "offset": [4.6, 3.5],      "tail": [0, 19.5] },
+    { "name": "shinL",      "parent": "thighL",    "offset": [0, 19.5],       "tail": [0, 19.5] },
+    { "name": "footL",      "parent": "shinL",     "offset": [0, 19.5],       "tail": [7.5, 2.5] }
+  ],
+  "contact": {
+    "footR": [[1.6, 4.4], [-3.5, 4.6], [-8.8, 4.2]],
+    "footL": [[-1.6, 4.4], [3.5, 4.6], [8.8, 4.2]]
+  },
+  "strings": [
+    { "bone": "head",  "point": [0, -21], "anchor": "center" },
+    { "bone": "handR", "point": [0, 2.5], "anchor": "barLeft" },
+    { "bone": "handL", "point": [0, 2.5], "anchor": "barRight" },
+    { "bone": "shinR", "point": [0, 19.5], "anchor": "crossFront" },
+    { "bone": "shinL", "point": [0, 19.5], "anchor": "crossBack" }
+  ]
+}

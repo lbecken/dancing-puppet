@@ -1,0 +1,4 @@
+z80==1.2.0
+z80dis
+numpy
+pillow

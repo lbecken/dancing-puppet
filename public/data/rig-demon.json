@@ -1,0 +1,254 @@
+{
+  "name": "demon-sprite",
+  "description": "Skeleton with the proportions of Leo Christopherson's demon sprite, in sprite pixels (28 x 60, square units: the original 28x30 sprite has 1:2 pixels). Used to fit poses to the original art and to overlay the fitted skeleton on the ghost sprite. Rest pose = all angles 0 = standing straight, arms and legs hanging down. Angles: degrees, positive = clockwise on screen (y axis points down). Bone 'offset' is the joint position in the parent's rest frame, 'tail' the bone vector in its own rest frame.",
+  "units": "sprite px",
+  "rest_root": [
+    14,
+    40.5
+  ],
+  "ground_y": 60,
+  "height": 60,
+  "bones": [
+    {
+      "name": "pelvis",
+      "parent": null,
+      "offset": [
+        0,
+        0
+      ],
+      "tail": [
+        0,
+        1.5
+      ]
+    },
+    {
+      "name": "spine",
+      "parent": "pelvis",
+      "offset": [
+        0,
+        0
+      ],
+      "tail": [
+        0,
+        -14.5
+      ]
+    },
+    {
+      "name": "neck",
+      "parent": "spine",
+      "offset": [
+        0,
+        -14.5
+      ],
+      "tail": [
+        0,
+        -2.5
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "neck",
+      "offset": [
+        0,
+        -2.5
+      ],
+      "tail": [
+        0,
+        -9
+      ]
+    },
+    {
+      "name": "upperArmR",
+      "parent": "spine",
+      "offset": [
+        -5.5,
+        -11.5
+      ],
+      "tail": [
+        0,
+        6.3
+      ]
+    },
+    {
+      "name": "forearmR",
+      "parent": "upperArmR",
+      "offset": [
+        0,
+        6.3
+      ],
+      "tail": [
+        0,
+        5.2
+      ]
+    },
+    {
+      "name": "handR",
+      "parent": "forearmR",
+      "offset": [
+        0,
+        5.2
+      ],
+      "tail": [
+        0,
+        8.0
+      ]
+    },
+    {
+      "name": "upperArmL",
+      "parent": "spine",
+      "offset": [
+        5.5,
+        -11.5
+      ],
+      "tail": [
+        0,
+        6.3
+      ]
+    },
+    {
+      "name": "forearmL",
+      "parent": "upperArmL",
+      "offset": [
+        0,
+        6.3
+      ],
+      "tail": [
+        0,
+        5.2
+      ]
+    },
+    {
+      "name": "handL",
+      "parent": "forearmL",
+      "offset": [
+        0,
+        5.2
+      ],
+      "tail": [
+        0,
+        8.0
+      ]
+    },
+    {
+      "name": "thighR",
+      "parent": "pelvis",
+      "offset": [
+        -2,
+        0
+      ],
+      "tail": [
+        0,
+        7.0
+      ]
+    },
+    {
+      "name": "shinR",
+      "parent": "thighR",
+      "offset": [
+        0,
+        7.0
+      ],
+      "tail": [
+        0,
+        7.5
+      ]
+    },
+    {
+      "name": "footR",
+      "parent": "shinR",
+      "offset": [
+        0,
+        7.5
+      ],
+      "tail": [
+        -6.5,
+        3.5
+      ]
+    },
+    {
+      "name": "thighL",
+      "parent": "pelvis",
+      "offset": [
+        2,
+        0
+      ],
+      "tail": [
+        0,
+        7.0
+      ]
+    },
+    {
+      "name": "shinL",
+      "parent": "thighL",
+      "offset": [
+        0,
+        7.0
+      ],
+      "tail": [
+        0,
+        7.5
+      ]
+    },
+    {
+      "name": "footL",
+      "parent": "shinL",
+      "offset": [
+        0,
+        7.5
+      ],
+      "tail": [
+        6.5,
+        3.5
+      ]
+    }
+  ],
+  "joint_names": {
+    "pelvis": "root / pelvis",
+    "spine": "waist",
+    "neck": "neck",
+    "head": "head",
+    "upperArmR": "right shoulder",
+    "forearmR": "right elbow",
+    "handR": "right wrist",
+    "upperArmL": "left shoulder",
+    "forearmL": "left elbow",
+    "handL": "left wrist",
+    "thighR": "right hip",
+    "shinR": "right knee",
+    "footR": "right ankle",
+    "thighL": "left hip",
+    "shinL": "left knee",
+    "footL": "left ankle"
+  },
+  "note": "R/L are the puppet's own right/left; facing the audience its right side is on screen left (negative x).",
+  "contact": {
+    "footR": [
+      [
+        0,
+        1.5
+      ],
+      [
+        -3.2,
+        3.6
+      ],
+      [
+        -6.5,
+        5.0
+      ]
+    ],
+    "footL": [
+      [
+        0,
+        1.5
+      ],
+      [
+        3.2,
+        3.6
+      ],
+      [
+        6.5,
+        5.0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+{
+ "frames_compared": 1100,
+ "sprite_match_exact": 0.7618,
+ "sprite_match_within_1_video_frame": 0.8945,
+ "stage_position_match": 0.8745,
+ "frame_explained_as_well_as_best_sprite": 0.9936,
+ "curtain_call_frames": 335,
+ "tone_onsets": 178,
+ "onset_flip_lag_scan": [
+  [
+   -60,
+   0.135
+  ],
+  [
+   -56,
+   0.163
+  ],
+  [
+   -52,
+   0.169
+  ],
+  [
+   -48,
+   0.185
+  ],
+  [
+   -44,
+   0.197
+  ],
+  [
+   -40,
+   0.197
+  ],
+  [
+   -36,
+   0.219
+  ],
+  [
+   -32,
+   0.23
+  ],
+  [
+   -28,
+   0.247
+  ],
+  [
+   -24,
+   0.258
+  ],
+  [
+   -20,
+   0.275
+  ],
+  [
+   -16,
+   0.281
+  ],
+  [
+   -12,
+   0.287
+  ],
+  [
+   -8,
+   0.287
+  ],
+  [
+   -4,
+   0.236
+  ],
+  [
+   0,
+   0.247
+  ],
+  [
+   4,
+   0.208
+  ],
+  [
+   8,
+   0.219
+  ],
+  [
+   12,
+   0.258
+  ],
+  [
+   16,
+   0.264
+  ],
+  [
+   20,
+   0.253
+  ],
+  [
+   24,
+   0.253
+  ],
+  [
+   28,
+   0.258
+  ],
+  [
+   32,
+   0.23
+  ],
+  [
+   36,
+   0.287
+  ],
+  [
+   40,
+   0.275
+  ],
+  [
+   44,
+   0.275
+  ],
+  [
+   48,
+   0.258
+  ],
+  [
+   52,
+   0.225
+  ],
+  [
+   56,
+   0.197
+  ],
+  [
+   60,
+   0.191
+  ]
+ ],
+ "onset_flip_best_lag_ms": -12,
+ "onset_to_nearest_flip_median_ms": 15.7,
+ "alignment": {
+  "linear_fit": {
+   "scale": 0.87062,
+   "offset": 24.5423
+  },
+  "matched_changes": 468,
+  "emulated_changes": 509,
+  "video_changes": 507,
+  "warp_inliers": 467,
+  "residual_std_s": 0.0182,
+  "residual_abs_max_s": 0.0699,
+  "window_motion_mismatches": 0
+ },
+ "tempo_ratio_original_vs_phillips": 1.1486,
+ "pose_fit_pixel_error_mean": 144.7,
+ "pose_fit_relative_error_mean": 0.204,
+ "pose_fit_worst": [
+  [
+   0.308,
+   "s29"
+  ],
+  [
+   0.259,
+   "s17"
+  ],
+  [
+   0.244,
+   "s26"
+  ],
+  [
+   0.236,
+   "s24"
+  ],
+  [
+   0.231,
+   "s22"
+  ]
+ ],
+ "poses_with_manual_overrides": [
+  "s23",
+  "s24",
+  "s25",
+  "s26",
+  "s27",
+  "s28",
+  "s29",
+  "s30"
+ ]
+}

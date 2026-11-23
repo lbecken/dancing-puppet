@@ -208,7 +208,7 @@ export class Choreography {
   // ---- editing ------------------------------------------------------------
 
   setPoseAngle(id: string, bone: string, deg: number) {
-    this.data.poses[id].angles[bone] = Math.round(deg * 100) / 100;
+    this.data.poses[id].angles[bone] = Math.round(wrap180(deg) * 100) / 100;
     this.data.poses[id].source = 'edited';
     this.rebuild();
   }

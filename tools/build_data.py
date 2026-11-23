@@ -109,6 +109,21 @@ def main():
     tone_on = [round(t, 3) for t in tone_on if 2 < t < music_end + 0.4]
     tap_on = [round(t, 3) for t in tap_on if 2 < t < music_end + 0.4]
 
+    # step vocabulary: every dance letter expands to a fixed sprite sequence
+    # (+ window motion), measured from the emulated performance
+    steps_mt = [(s['t'] - MEDIA_START, s['letter']) for s in T['steps']]
+    lib = {}
+    for i, (a, L) in enumerate(steps_mt):
+        b = steps_mt[i + 1][0] if i + 1 < len(steps_mt) else T['music_end'] - MEDIA_START
+        seq = [k for k in keys if a - 0.005 <= k['t'] < b - 0.005]
+        if L in lib or not seq:
+            continue
+        dur = b - a
+        lib[L] = {
+            'notes': round(dur / (0.8706 / 3)),
+            'frames': [{'at': round((k['t'] - a) / dur, 4), 'pose': k['pose'], 'dx': k['dx'], 'dy': k['dy']}
+                       for k in seq],
+        }
     out = {
         'version': 1,
         'title': 'Dancing Demon choreography (reconstructed)',
@@ -121,6 +136,8 @@ def main():
         'poses': poses,
         'keyframes': keys,
         'steps': [{'t': mt(s['t']), 'letter': s['letter']} for s in T['steps']],
+        'stepLibrary': lib,
+        'danceString': ''.join(s['letter'] for s in T['steps']),
         'notes': [{'t': mt(s['t']), 'letter': s['letter']} for s in T['notes']],
         'audioOnsets': {'tone': tone_on, 'tap': tap_on},
         'curtain': curtain,

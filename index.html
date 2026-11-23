@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dancing Puppet</title>
+    <meta name="description" content="Leo Christopherson's Dancing Demon (TRS-80, 1979) reconstructed from the original program and danced by a wooden cat marionette." />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <h1>Dancing Puppet</h1>
+        <p>The choreography of Leo Christopherson's <em>Dancing Demon</em> (TRS-80, 1979), performed by a wooden cat marionette.</p>
+      </div>
+      <div class="transport" role="toolbar" aria-label="Playback">
+        <button id="btnRestart" type="button" title="Restart (Home)">⏮</button>
+        <button id="btnPrevKey" type="button" title="Previous keyframe (Shift+←)">◀◀</button>
+        <button id="btnBackF" type="button" title="Back 1/60 s (←)">◀</button>
+        <button id="btnPlay" type="button" class="primary" title="Play / pause (Space)">Play</button>
+        <button id="btnFwdF" type="button" title="Forward 1/60 s (→)">▶</button>
+        <button id="btnNextKey" type="button" title="Next keyframe (Shift+→)">▶▶</button>
+        <button id="btnDance" type="button" title="Jump to the start of the dance">dance</button>
+        <span id="timeReadout" class="mono">0.000 s</span>
+        <label class="inline">speed
+          <select id="rate">
+            <option value="0.25">0.25×</option>
+            <option value="0.5">0.5×</option>
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+          </select>
+        </label>
+        <label class="inline">vol <input id="volume" type="range" min="0" max="1" step="0.05" value="1" /></label>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="stage-panel">
+        <canvas id="stage" aria-label="Marionette stage"></canvas>
+        <div id="loading" class="loading">Loading…</div>
+      </section>
+      <aside class="ref-panel">
+        <figure class="ref-video">
+          <video id="refVideo" muted playsinline preload="auto">
+            <source src="ref/reference.webm" type="video/webm" />
+            <source src="ref/reference.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Original · TRS-80 recording</figcaption>
+        </figure>
+        <figure class="ref-ghost">
+          <canvas id="ghost"></canvas>
+          <figcaption>
+            Recovered sprite + fitted skeleton
+            <label class="inline"><input id="optRefSprite" type="checkbox" checked /> sprite</label>
+            <label class="inline"><input id="optRefSkeleton" type="checkbox" checked /> skeleton</label>
+          </figcaption>
+        </figure>
+      </aside>
+    </main>
+
+    <section class="timeline-panel">
+      <canvas id="timeline" aria-label="Timeline"></canvas>
+      <div class="legend">
+        rows: overview · seconds · <b>dance step</b> · <b>tune note</b> · <b>keyframes</b> (original sprites) ·
+        detected audio onsets (<span class="c-tone">tone</span> / <span class="c-tap">tap</span>). Click or drag to seek, wheel to zoom.
+      </div>
+    </section>
+
+    <section class="panels">
+      <div class="panel">
+        <h3>View</h3>
+        <div class="checks">
+          <label><input id="optSkeleton" type="checkbox" /> skeleton (S)</label>
+          <label><input id="optLabels" type="checkbox" /> joint labels</label>
+          <label><input id="optStrings" type="checkbox" /> strings</label>
+          <label><input id="optGhost" type="checkbox" /> original ghost (G)</label>
+          <label><input id="optCurtain" type="checkbox" /> curtain</label>
+          <label><input id="optEdit" type="checkbox" /> edit mode (E)</label>
+        </div>
+        <h3>Motion</h3>
+        <label class="row">interpolation
+          <select id="interpMode">
+            <option value="smooth">smooth (monotone cubic)</option>
+            <option value="linear">linear</option>
+            <option value="snap">original flip-book</option>
+          </select>
+        </label>
+        <label class="row">transition phase <input id="phase" type="range" min="0" max="1" step="0.05" /> <output id="phaseOut"></output></label>
+        <label class="row">max transition <input id="maxTrans" type="range" min="20" max="250" step="5" /> <output id="maxTransOut"></output></label>
+        <h3>Sync</h3>
+        <label class="row">A/V offset <input id="avOffset" type="range" min="-150" max="150" step="1" /> <output id="avOffsetOut"></output></label>
+        <label class="row">reference video offset <input id="refOffset" type="range" min="-300" max="300" step="1" /> <output id="refOffsetOut"></output></label>
+        <label class="row"><input id="optLatency" type="checkbox" /> compensate audio output latency</label>
+        <p class="hint">Keys: Space play/pause · ←/→ 1/60 s · Shift+←/→ keyframe · ,/. one video frame · Home restart</p>
+      </div>
+      <div class="panel">
+        <h3>Inspector</h3>
+        <div id="inspector"></div>
+      </div>
+      <div class="panel editor-panel">
+        <h3>Pose editor</h3>
+        <div id="editor"></div>
+      </div>
+    </section>
+
+    <footer>
+      Choreography and timing recovered from George Phillips' <em>Doubled Dancing Demon</em> (art and dance by Leo Christopherson; the original was released into the public domain), emulated cycle-exactly and aligned to the supplied reference recording.
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

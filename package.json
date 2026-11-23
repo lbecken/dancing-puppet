@@ -12,6 +12,7 @@
     "test": "node --experimental-strip-types tests/rig.test.ts"
   },
   "devDependencies": {
+    "@types/node": "^22.15.29",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   }

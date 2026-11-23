@@ -44,10 +44,18 @@ export class ReferencePanel {
     if (v.readyState < 1) return;
     const target = Math.min(Math.max(0, t + this.offset), (v.duration || 1e9) - 0.001);
     if (playing) {
-      if (v.playbackRate !== rate) v.playbackRate = rate;
       if (v.paused) void v.play().catch(() => {});
-      // correct only real drift; continuous seeking would stutter
-      if (Math.abs(v.currentTime - target) > 0.12) v.currentTime = target;
+      const drift = v.currentTime - target;
+      if (Math.abs(drift) > 0.25) {
+        // large jump (seek / stall): hard resync
+        v.currentTime = target;
+        v.playbackRate = rate;
+      } else {
+        // small drift: nudge the rate (seeking every frame would stutter)
+        const corr = Math.abs(drift) < 0.012 ? 0 : Math.max(-0.08, Math.min(0.08, -drift * 0.8));
+        const want = rate * (1 + corr);
+        if (Math.abs(v.playbackRate - want) > 1e-3) v.playbackRate = want;
+      }
     } else {
       if (!v.paused) v.pause();
       if (Math.abs(target - this.lastSeek) > 1e-4 && Math.abs(v.currentTime - target) > 0.004) {

@@ -1,0 +1,387 @@
+:root {
+  --bg: #f3ece6;
+  --panel: #fbf7f3;
+  --line: #e2d5ca;
+  --ink: #3b2a22;
+  --muted: #8a7466;
+  --accent: #b0304a;
+  --wood: #d9a86c;
+  --radius: 10px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.4 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.mono,
+output {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 14px 20px 10px;
+}
+
+.brand h1 {
+  margin: 0;
+  font: 600 22px/1.1 Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  letter-spacing: 0.01em;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.transport {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+button,
+select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--wood);
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  min-width: 74px;
+  font-weight: 600;
+}
+
+#timeReadout {
+  min-width: 78px;
+  text-align: right;
+  padding: 0 4px;
+}
+
+label.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 14px;
+  padding: 0 20px;
+}
+
+.stage-panel {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 3;
+  background: #f8f0ea;
+}
+
+#stage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+body.editing #stage {
+  cursor: crosshair;
+}
+
+.loading {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(59, 42, 34, 0.78);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  transition: opacity 0.6s;
+}
+
+.loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading.error {
+  background: var(--accent);
+}
+
+.ref-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+figure {
+  margin: 0;
+  background: #0b120c;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+figure video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #000;
+}
+
+.ref-ghost canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: center;
+  font-size: 12px;
+  color: #b9d9be;
+  padding: 5px 10px;
+  background: #121a13;
+}
+
+figcaption label.inline {
+  color: #b9d9be;
+}
+
+.timeline-panel {
+  margin: 14px 20px 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 6px 8px 4px;
+}
+
+#timeline {
+  display: block;
+  width: 100%;
+  height: 152px;
+  touch-action: none;
+  cursor: pointer;
+}
+
+.legend {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 2px 2px 0;
+}
+
+.c-tone {
+  color: #36456b;
+  font-weight: 600;
+}
+
+.c-tap {
+  color: #b0304a;
+  font-weight: 600;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 14px;
+  padding: 14px 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px 12px;
+  min-width: 0;
+}
+
+.panel h3 {
+  margin: 6px 0 8px;
+  font: 600 13px/1.2 ui-sans-serif, system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.panel h4 {
+  margin: 10px 0 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+}
+
+label.row {
+  display: grid;
+  grid-template-columns: 9.5em 1fr 4.5em;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+label.row:has(> input[type='checkbox']) {
+  display: flex;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 6px 0;
+}
+
+table.kv,
+table.joints {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+table.kv th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 2px 8px 2px 0;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+table.kv td,
+table.joints td {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  padding: 2px 0;
+}
+
+table.joints th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+table.joints td:not(:first-child) {
+  text-align: right;
+}
+
+.sliders {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  margin: 8px 0;
+}
+
+label.slider {
+  display: grid;
+  grid-template-columns: 8.5em 1fr 5em;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+
+label.slider input[type='number'] {
+  width: 100%;
+  font: 12px ui-monospace, monospace;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 2px 4px;
+  background: #fff;
+}
+
+.ed-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.ed-row button {
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+footer {
+  padding: 4px 20px 24px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .ref-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .panels {
+    grid-template-columns: 1fr 1fr;
+  }
+  .editor-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .top,
+  .layout,
+  .panels {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .timeline-panel {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .ref-panel,
+  .panels {
+    grid-template-columns: 1fr;
+  }
+  .checks {
+    grid-template-columns: 1fr;
+  }
+}

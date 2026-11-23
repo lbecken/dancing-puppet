@@ -36,8 +36,8 @@ export interface Camera {
 }
 
 export function makeCamera(width: number, height: number, rigHeight: number, rigGround: number): Camera {
-  const scale = Math.min((height * 0.56) / rigHeight, (width * 0.42) / 60);
-  return { scale, originX: width / 2, groundY: height * 0.87, rigGround, width, height };
+  const scale = Math.min((height * 0.62) / rigHeight, (width * 0.46) / 60);
+  return { scale, originX: width / 2, groundY: height * 0.89, rigGround, width, height };
 }
 
 export function cameraMatrix(c: Camera): DOMMatrix {

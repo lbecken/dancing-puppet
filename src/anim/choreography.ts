@@ -192,6 +192,19 @@ export class Choreography {
     return res;
   }
 
+  /** The exact pose of keyframe i (what the original shows), no interpolation. */
+  keyPose(i: number, out?: SampledPose): SampledPose {
+    const k = this.data.keyframes[i];
+    const p = this.data.poses[k.pose];
+    const res: SampledPose = out ?? { root: [0, 0], angles: {}, channels: { headYaw: 0, headPitch: 0 } };
+    res.root[0] = p.root[0] + k.dx;
+    res.root[1] = p.root[1] + k.dy;
+    for (const b of this.bones) res.angles[b] = p.angles[b] ?? 0;
+    res.channels.headYaw = p.channels?.headYaw ?? 0;
+    res.channels.headPitch = p.channels?.headPitch ?? 0;
+    return res;
+  }
+
   // ---- editing ------------------------------------------------------------
 
   setPoseAngle(id: string, bone: string, deg: number) {

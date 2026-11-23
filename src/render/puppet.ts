@@ -145,13 +145,16 @@ export class PuppetRenderer {
     this.enter(ctx, i);
     const w = this.skel.world[i];
     // flat oval paddle, slightly wider towards the fingers
+    ctx.save();
+    ctx.scale(1.22, 1.15);
     ctx.beginPath();
     ctx.moveTo(-1.7, 1.2);
     ctx.bezierCurveTo(-3.9, 2.8, -3.8, 8.6, -1.2, 9.6);
     ctx.bezierCurveTo(0.2, 10.1, 1.6, 10.0, 2.6, 9.0);
     ctx.bezierCurveTo(4.4, 7.0, 3.6, 2.6, 1.7, 1.2);
     ctx.closePath();
-    ctx.fillStyle = woodGradient(ctx, 3.6, w.cos, w.sin, 0);
+    ctx.restore();
+    ctx.fillStyle = woodGradient(ctx, 4.4, w.cos, w.sin, 0);
     ctx.fill();
     this.stroke(ctx);
   }
@@ -162,7 +165,7 @@ export class PuppetRenderer {
     const w = this.skel.world[i];
     // rounded clog pointing outwards (side = -1 screen left, +1 right)
     ctx.save();
-    ctx.scale(side, 1);
+    ctx.scale(side * 1.12, 1.12);
     ctx.beginPath();
     ctx.moveTo(-2.4, 1.0);
     ctx.bezierCurveTo(-1.0, -0.6, 4.6, 0.2, 7.6, 1.6);
@@ -328,11 +331,11 @@ export class PuppetRenderer {
     ctx.lineJoin = 'round';
     // legs (far to near does not matter in a frontal view)
     for (const s of ['R', 'L']) {
-      this.ball(ctx, `thigh${s}`, 0, 0, 3.6);
-      this.segment(ctx, `thigh${s}`, 1.4, 18.0, 6.6, 5.2, 2);
-      this.ball(ctx, `shin${s}`, 0, 0, 3.0);
-      this.segment(ctx, `shin${s}`, 1.4, 18.6, 5.2, 3.9, 2);
-      this.ball(ctx, `foot${s}`, 0, 0, 2.5);
+      this.ball(ctx, `thigh${s}`, 0, 0, 4.0);
+      this.segment(ctx, `thigh${s}`, 1.4, 18.0, 7.6, 6.0, 2);
+      this.ball(ctx, `shin${s}`, 0, 0, 3.5);
+      this.segment(ctx, `shin${s}`, 1.4, 18.6, 6.0, 4.6, 2);
+      this.ball(ctx, `foot${s}`, 0, 0, 2.9);
       this.foot(ctx, `foot${s}`, s === 'R' ? -1 : 1);
     }
     this.pelvis(ctx);
@@ -341,11 +344,11 @@ export class PuppetRenderer {
     this.ball(ctx, 'neck', 0, -0.6, 2.7);
     this.segment(ctx, 'neck', -0.2, -4.2, 3.7, 3.3, 0);
     for (const s of ['R', 'L']) {
-      this.ball(ctx, `upperArm${s}`, 0, 0, 3.2);
-      this.segment(ctx, `upperArm${s}`, 1.2, 12.4, 5.0, 4.0, 2);
-      this.ball(ctx, `forearm${s}`, 0, 0, 2.6);
-      this.segment(ctx, `forearm${s}`, 1.0, 11.6, 4.1, 3.2, 1);
-      this.ball(ctx, `hand${s}`, 0, 0, 2.0);
+      this.ball(ctx, `upperArm${s}`, 0, 0, 3.6);
+      this.segment(ctx, `upperArm${s}`, 1.2, 12.4, 5.8, 4.7, 2);
+      this.ball(ctx, `forearm${s}`, 0, 0, 3.1);
+      this.segment(ctx, `forearm${s}`, 1.0, 11.6, 4.8, 3.8, 1);
+      this.ball(ctx, `hand${s}`, 0, 0, 2.4);
       this.hand(ctx, `hand${s}`);
     }
     this.head(ctx, ch);

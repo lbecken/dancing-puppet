@@ -1,32 +1,94 @@
 {
   "_doc": "Manual corrections applied on top of the automatic fit (tools/fit_poses.py). Keys are pose ids (sNN = sprite NN). 'angles' / 'root' entries replace the fitted values; 'channels' set non-skeletal parameters that a silhouette cannot show: headYaw in degrees (0 = facing the audience, negative = turned towards screen left, +-180 = back view), headPitch 0..1 (looking down / nodding). Every override below is a hypothesis read by eye from the sprite and the recording, not a measurement.",
-  "s23": { "channels": { "headYaw": -55 }, "_why": "eyes shifted to screen left: starting the turn" },
-  "s24": { "channels": { "headYaw": -180 }, "_why": "no eyes: back view" },
-  "s25": { "channels": { "headYaw": -180 }, "_why": "no eyes: back view" },
+  "s23": {
+    "channels": {
+      "headYaw": -55
+    },
+    "_why": "eyes shifted to screen left: starting the turn"
+  },
+  "s24": {
+    "channels": {
+      "headYaw": -180
+    },
+    "_why": "no eyes: back view"
+  },
+  "s25": {
+    "channels": {
+      "headYaw": -180
+    },
+    "_why": "no eyes: back view"
+  },
   "s26": {
-    "channels": { "headYaw": -180 },
-    "angles": { "upperArmR": 12, "forearmR": 4, "handR": 0, "upperArmL": -34, "forearmL": -8, "handL": -10 },
+    "channels": {
+      "headYaw": -180
+    },
+    "angles": {
+      "upperArmR": 12,
+      "forearmR": 4,
+      "handR": 0,
+      "upperArmL": -34,
+      "forearmL": -8,
+      "handL": -10
+    },
     "_why": "back view; automatic fit folded both arms into the torso"
   },
-  "s27": { "channels": { "headYaw": 55 }, "_why": "eyes shifted to screen right: finishing the turn" },
+  "s27": {
+    "channels": {
+      "headYaw": 55
+    },
+    "_why": "eyes shifted to screen right: finishing the turn"
+  },
   "s28": {
-    "channels": { "headPitch": 0.3 },
-    "angles": { "upperArmR": 52, "forearmR": -98, "handR": -35, "upperArmL": -52, "forearmL": 98, "handL": 35 },
+    "channels": {
+      "headPitch": 0.3
+    },
+    "angles": {
+      "upperArmR": 42,
+      "forearmR": -88,
+      "handR": 28,
+      "upperArmL": -42,
+      "forearmL": 88,
+      "handL": -28
+    },
     "_why": "curtain call: hands on hips, head dipped ~2 px in the recording"
   },
   "s29": {
-    "channels": { "headPitch": 1.0 },
+    "channels": {
+      "headPitch": 1.0
+    },
     "angles": {
-      "spine": 0, "neck": 0, "head": 0,
-      "upperArmR": 38, "forearmR": 12, "handR": 18,
-      "upperArmL": -52, "forearmL": 98, "handL": 35,
-      "thighR": 9, "shinR": -18, "footR": 9, "thighL": -9, "shinL": 18, "footL": -9
+      "spine": 0,
+      "neck": 0,
+      "head": 0,
+      "upperArmR": 38,
+      "forearmR": 12,
+      "handR": 18,
+      "upperArmL": -42,
+      "forearmL": 88,
+      "handL": -28,
+      "thighR": 20,
+      "shinR": -40,
+      "footR": 20,
+      "thighL": -20,
+      "shinL": 40,
+      "footL": -20
     },
     "_why": "curtain call bow: head drops ~5 px, right arm sweeps down and out, left hand on hip. A forward bow cannot be shown by in-plane rotation of rigid parts, so it is rendered as a head nod plus a small plie."
   },
   "s30": {
-    "channels": { "headPitch": 0.3 },
-    "angles": { "neck": -4, "head": -12, "upperArmR": 52, "forearmR": -98, "handR": -35, "upperArmL": -52, "forearmL": 98, "handL": 35 },
+    "channels": {
+      "headPitch": 0.3
+    },
+    "angles": {
+      "neck": -4,
+      "head": -12,
+      "upperArmR": 42,
+      "forearmR": -88,
+      "handR": 28,
+      "upperArmL": -42,
+      "forearmL": 88,
+      "handL": -28
+    },
     "_why": "curtain call: hands on hips with a cocky head tilt"
   }
 }
